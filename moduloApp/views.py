@@ -19,7 +19,7 @@ def viewProducto(request):
         'tipo': producto,
         'titulo': 'Productos',
     }
-    return render(request, 'viewProducto.html', data)
+    return render(request, 'sistema/viewProductos.html', data)
 
 
 def addProducto(request):
@@ -31,16 +31,16 @@ def addProducto(request):
         formulario = ProductoForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            return redirect('/productos')
+            return redirect('/producto')
         else:
             data['form'] = formulario
-    return render(request, 'formProductos.html', data)
+    return render(request, 'sistema/formProductos.html', data)
 
 
 def deleteProducto(request, id):
     producto = Producto.objects.get(id=id)
     producto.delete()
-    return redirect('/productos')
+    return redirect('/producto')
 
 
 def editarProducto(request, id):
@@ -56,7 +56,7 @@ def editarProducto(request, id):
             return redirect('/producto')
         else:
             data['form'] = form
-    return render(request, 'formProducto.html', data)
+    return render(request, 'sistema/formProductos.html', data)
 
 
 class CustomLoginView(LoginView):

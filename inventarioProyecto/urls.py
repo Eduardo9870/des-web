@@ -19,7 +19,7 @@ from moduloApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('segunda/', vistaDos, name='segunda'),
-    path('login/', CustomLoginView.as_view(), name='login')
+    path('/', CustomLoginView.as_view(), name='login'),
+    path('producto/', viewProducto, name='producto'),
+    path('add/', addProducto, name='add')
 ]

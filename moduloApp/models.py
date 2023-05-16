@@ -6,11 +6,16 @@ class tipoProducto (models.Model):
     descripcionTipoProducto = models.CharField(max_length=100)
 
 
+class Bodega (models.Model):
+    nombreBodega = models.CharField(max_length=50)
+    direccionBodega = models.CharField(max_length=100)
+
+
 class Producto (models. Model):
     nombreProducto = models.CharField(max_length=50)
     cantidad = models.IntegerField()
     descripcionProducto = models.CharField(max_length=100)
-    idTipoProducto = models.ForeignKey(tipoProducto, on_delete=models.CASCADE)
+    id_bodega = models.ForeignKey(Bodega, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Producto"
@@ -32,11 +37,6 @@ class Proyecto (models.Model):
     estadoProyecto = models.CharField(max_length=100)
     id_Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     id_Producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-
-
-class Bodega (models.Model):
-    nombreBodega = models.CharField(max_length=50)
-    direccionBodega = models.CharField(max_length=100)
 
 
 class productoBodega (models.Model):
